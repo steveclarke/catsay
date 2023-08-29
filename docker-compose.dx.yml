@@ -11,8 +11,6 @@ services:
         consistency: "consistent"
     entrypoint: /root/show-help-in-app-container-then-wait.sh
     working_dir: /root/work
-
-
     ports:
-      - "4242:4242"
+      - "4242:3000"
 

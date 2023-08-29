@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body class="ff-sans">
+    <header class="pa-3 bg-black white">
+      <h1 class="f-5">Cat Say</h1>
+      <h2 class="f-4">The Website That Makes Cats Say Things</h2>
+    </header>
+    <main class="w-50">
+      <section data-testid="stairs" class="<%= @pic == 'stairs' ? 'db' : 'dn' %> pos-relative" style="width: 500px">
+        <div class="pos-absolute bg-white black ba bw-3 br-5 f-4 ff-fantasy tc pv-3" style="left: 230px; top: 50px; width: 200px;">
+          <%= @carlos_message %>
+        </div>
+        <div class="pos-absolute bg-white black ba bw-3 br-5 f-4 ff-fantasy tc pv-3" style=" right: 0; bottom: 150px; width: 200px;" >
+          <%= @zoni_message %>
+        </div>
+        <img src="/images/stairs.jpg" class="w-100 mw-100">
+      </section>
+      <section data-testid="piano" class="<%= @pic == 'piano' ? 'db' : 'dn' %> pos-relative" style="width: 500px">
+          <div class="pos-absolute bg-white black ba bw-3 br-5 f-3 lh-copy fw-7 ff-fantasy tc pv-3" style="left: 10px; top: 60px; width: 200px;">
+            <%= @zoni_message %>
+          </div>
+          <div class="pos-absolute bg-white black ba bw-3 br-5 f-3 lh-copy fw-7 ff-fantasy tc pv-3" style=" right: 0; bottom: 200px; width: 200px;" >
+            <%= @carlos_message %>
+          </div>
+        <img src="/images/piano.jpg" class="w-100 mw-100">
+      </section>
+      <section data-testid="box" class="<%= @pic == 'box' ? 'db' : 'dn' %> pos-relative" style="width: 500px">
+          <div class="pos-absolute bg-white black ba bw-3 br-5 f-3 lh-copy fw-7 ff-fantasy tc pv-3" style="left: 10px; bottom: 10px; width: 200px;">
+            <%= @zoni_message %>
+          </div>
+          <div class="pos-absolute bg-white black ba bw-3 br-5 f-3 lh-copy fw-7 ff-fantasy tc pv-3" style=" right: 80px; bottom: 20px; width: 200px;" >
+            <%= @carlos_message %>
+          </div>
+        <img src="/images/box.jpg" class="w-100 mw-100">
+      </section>
+      <form action="/" method="POST" class="pa-3">
+        <div class="flex items-start justify-start">
+        <label class="db pv-2" for="zoni-message">
+          <span class="db mt-2 mb-1">What should Zoni say?</span>
+          <input id="zoni-message" value="<%= @zoni_message %>" type="text" name="zoni-message" class="db bg-gray-lightest pa-2 f-3 lh-copy ba bc-gray br-1">
+        </label>
+        <label class="db pv-2 ml-2" for="carlos-message">
+          <span class="db mt-2 mb-1">What should Carlos Rosario say?</span>
+          <input id="carlos-message" value="<%= @carlos_message %>" type="text" name="carlos-message" class="db bg-gray-lightest pa-2 f-3 lh-copy ba bc-gray br-1">
+        </label>
+        </div>
+        <label class="db pv-2" for="where">
+          <span class="db mt-2 mb-1">
+          Where should they be?
+          </span>
+        <select id="where" name="where" class="pa-2 f-3 ba bc-gray bg-gray-lightest br-1 w-auto">
+          <option>--Select Where--</option>
+          <option <%= @pic == "box" ? "selected" : "" %> value="box">In an box together</option>
+          <option <%= @pic == "piano" ? "selected" : "" %> value="piano">On the piano</option>
+          <option <%= @pic == "stairs" ? "selected" : "" %> value="stairs">As kittens on the stairs</option>
+        </select>
+        </label>
+        <button class="db w-100 ph-4 pv-3 ba br-4 bg-black white fw-bold tc f-4 mt-3">
+          Command My Cats!
+        </button>
+      </form>
+    </main>
+  </body>
+</html>
+

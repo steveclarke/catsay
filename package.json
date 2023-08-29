@@ -1,0 +1,14 @@
+{
+  "name": "catsay",
+  "version": "1.0.0",
+  "devDependencies": {
+    "esbuild": "^0.19.2",
+    "melange-css": "^1.0.0-alpha7"
+  },
+  "dependencies": {
+    "help": "^3.0.2"
+  },
+  "scripts": {
+    "build:css": "esbuild --sourcemap --bundle app/css/index.css --outfile=app/public/css/styles.css"
+  }
+}

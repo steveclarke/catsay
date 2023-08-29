@@ -1,0 +1,6 @@
+#!/bin/sh
+
+PORT="${PORT:-3000}"
+export PORT
+npm run build:css
+bundle exec ruby app/app.rb
