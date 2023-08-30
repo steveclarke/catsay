@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+require "fileutils"
+require "pathname"
+require "redis"
+require "dotenv"
+
+ROOT = (Pathname(__FILE__).dirname / "..").expand_path
+
+FileUtils.chdir ROOT do
+  RACK_ENV = ENV.fetch("RACK_ENV", "development")
+  Dotenv.load(".env.#{RACK_ENV}", ".env.#{RACK_ENV}.local")
+
+  REDIS = Redis.new(url: ENV.fetch("REDIS_URL"))
+puts ENV["REDIS_URL"]
+  REDIS.del("messages")
+  [
+    "Docker is awesome!",
+    "Can we have lunch?",
+    "I can haz host?",
+    "Series D is for Docker",
+    "It's playtime - where's my container?",
+    "Boxes are the best containers",
+    "Base images?",
+  ].each do |message|
+    REDIS.sadd("messages",message)
+  end
+end

@@ -17,6 +17,8 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    connection_pool (2.4.1)
+    dotenv (2.8.1)
     foreman (0.87.2)
     matrix (0.4.2)
     mini_mime (1.1.5)
@@ -36,6 +38,10 @@ GEM
     rack-test (2.1.0)
       rack (>= 1.3)
     rake (13.0.6)
+    redis (5.0.7)
+      redis-client (>= 0.9.0)
+    redis-client (0.16.0)
+      connection_pool
     regexp_parser (2.8.1)
     ruby2_keywords (0.0.5)
     sinatra (3.1.0)
@@ -54,11 +60,13 @@ PLATFORMS
 DEPENDENCIES
   bundle-audit
   capybara
+  dotenv
   foreman
   minitest
   puma
   rack-test
   rake
+  redis
   sinatra
 
 RUBY VERSION

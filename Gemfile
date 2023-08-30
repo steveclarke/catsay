@@ -22,3 +22,9 @@ gem "rake"
 
 # Audit gems for CVEs
 gem "bundle-audit"
+
+# Redis is used for caching
+gem "redis"
+
+# dotenv loads environment variables from a file
+gem "dotenv"

@@ -46,6 +46,15 @@
           <input id="carlos-message" value="<%= @carlos_message %>" type="text" name="carlos-message" class="db bg-gray-lightest pa-2 f-3 lh-copy ba bc-gray br-1">
         </label>
         </div>
+        <% if @ideas.length > 1 %>
+          <div class="ba pa-3 br-2 bg-gray-darkest gray-lightest">
+            <span class="f-3 fw-bold">What about?</span>
+            <div class="ml-4 mv-2">
+              “<span class="i"><%= @ideas[0] %></span>” or “<span class="i"><%= @ideas[1] %></span>”
+            </div>
+            Or try a <a title="Show Random Image" class="white hover-blue-light" href="/random">random one</a>!
+          </div>
+        <% end %>
         <label class="db pv-2" for="where">
           <span class="db mt-2 mb-1">
           Where should they be?

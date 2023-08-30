@@ -11,6 +11,9 @@ def setup
   # bundle check indicates we need to
   system! "npm --no-color --no-progress install"
 
+  log "Seeding Redis with Messages"
+  system! "bin/seed"
+
   log "All set up."
   log ""
   help
@@ -24,6 +27,9 @@ def help
   log ""
   log "  bin/ci"
   log "     # runs all tests and checks as CI would"
+  log ""
+  log "  bin/ssed"
+  log "     # Re-seed dev Redis with messages"
   log ""
   log "  bin/setup help"
   log "     # show this help"
