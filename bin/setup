@@ -13,10 +13,7 @@ def setup
 
   log "All set up."
   log ""
-  log "To see commonly-needed commands, run:"
-  log ""
-  log "    bin/setup help"
-  log ""
+  help
 end
 
 def help

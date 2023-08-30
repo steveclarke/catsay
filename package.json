@@ -9,6 +9,6 @@
     "help": "^3.0.2"
   },
   "scripts": {
-    "build:css": "esbuild --sourcemap --bundle app/css/index.css --outfile=app/public/css/styles.css"
+    "build:css": "esbuild --color=false --log-level=error --sourcemap --bundle app/css/index.css --outfile=app/public/css/styles.css"
   }
 }
