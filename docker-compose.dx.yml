@@ -13,4 +13,7 @@ services:
     working_dir: /root/work
     ports:
       - "4141:3000"
-
+  redis:
+    image: redis:6
+    platform: ${DOCKER_DEFAULT_PLATFORM}
+    pull_policy: "missing"
