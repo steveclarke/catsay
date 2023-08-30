@@ -2,5 +2,8 @@
 
 PORT="${PORT:-3000}"
 export PORT
+
+set -e 
+
 npm run build:css
 bundle exec ruby app/app.rb
