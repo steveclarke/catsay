@@ -11,7 +11,7 @@ class TheOnlyTest < Minitest::Test
 
   def test_page
     visit "/"
-    assert page.has_content?("Cat Say")
+    assert page.has_content?("CatSay")
     assert page.has_selector?(".dn[data-testid='stairs']")
     assert page.has_selector?(".dn[data-testid='piano']")
   end
