@@ -1,7 +1,10 @@
 #!/bin/sh
 
 PORT="${PORT:-3000}"
+RACK_ENV=development
+
 export PORT
+export RACK_ENV
 
 set -e 
 npm run build:css
