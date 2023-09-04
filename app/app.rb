@@ -19,7 +19,24 @@ File.open(PIDS / "server.pid","w") do |file|
   file.puts $$
 end
 
-REDIS = Redis.new(url: ENV.fetch("REDIS_URL"))
+class FakeRedis
+  def sadd(*args)
+  end
+
+  def smembers(*args)
+    []
+  end
+  def del(*args)
+  end
+end
+REDIS = begin
+          redis = Redis.new(url: ENV.fetch("REDIS_URL"))
+          redis.keys # test connection
+          redis
+        rescue => ex
+          puts ex.message
+          FakeRedis.new
+        end
 
 def generate_ideas
   messages = REDIS.smembers("messages") || []

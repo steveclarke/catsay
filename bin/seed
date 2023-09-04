@@ -12,7 +12,6 @@ FileUtils.chdir ROOT do
   Dotenv.load(".env.#{RACK_ENV}", ".env.#{RACK_ENV}.local")
 
   REDIS = Redis.new(url: ENV.fetch("REDIS_URL"))
-puts ENV["REDIS_URL"]
   REDIS.del("messages")
   [
     "Docker is awesome!",
@@ -27,4 +26,6 @@ puts ENV["REDIS_URL"]
   ].each do |message|
     REDIS.sadd("messages",message)
   end
+rescue => ex
+  puts ex.message
 end

@@ -14,12 +14,21 @@ class TheOnlyTest < Minitest::Test
   end
 
   def test_page
-    REDIS.sadd("messages", "Message 1")
-    REDIS.sadd("messages", "Message 2")
     visit "/"
     assert page.has_content?("CatSay")
     assert page.has_selector?(".dn[data-testid='stairs']")
     assert page.has_selector?(".dn[data-testid='piano']")
+  end
+
+  def test_page_with_suggestions
+    if (REDIS.class.name == "FakeRedis")
+      puts "Skipping test_page_with_suggestions since no Redis"
+      return
+    end
+    REDIS.sadd("messages", "Message 1")
+    REDIS.sadd("messages", "Message 2")
+    visit "/"
+    assert page.has_content?("CatSay")
     assert page.has_content?("Message 1")
     assert page.has_content?("Message 2")
   end
@@ -42,6 +51,10 @@ class TheOnlyTest < Minitest::Test
   end
 
   def test_random
+    if (REDIS.class.name == "FakeRedis")
+      puts "Skipping test_random since no Redis"
+      return
+    end
     REDIS.sadd("messages", "Message 1")
     REDIS.sadd("messages", "Message 2")
     visit "/"
