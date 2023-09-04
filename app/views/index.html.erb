@@ -44,7 +44,7 @@
           <div>
             <input id="zoni-message" value="<%= @zoni_message %>" type="text" name="zoni-message" class="ff-fantasy w-auto db bg-gray-lightest pa-2 f-3 lh-copy ba bc-gray br-1">
             <% if @ideas.length > 0 %>
-              <div>
+              <div class="lh-copy mt-2">
                 How about “<span class="f-4 ff-fantasy"><%= @ideas[0] %></span>”
               </div>
             <% end %>
@@ -58,7 +58,7 @@
           <div>
             <input id="carlos-message" value="<%= @carlos_message %>" type="text" name="carlos-message" class="ff-fantasy w-auto db bg-gray-lightest pa-2 f-3 lh-copy ba bc-gray br-1">
             <% if @ideas.length > 1 %>
-              <div>
+              <div class="lh-copy mt-2">
                 How about “<span class="f-3 ff-fantasy"><%= @ideas[1] %></span>”
               </div>
             <% end %>
