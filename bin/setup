@@ -4,7 +4,7 @@ def setup
   log "Installing gems"
   # Only do bundle install if the much-faster
   # bundle check indicates we need to
-  system! "bundle check || bundle install"
+  system! "bundle check --no-color || bundle install --no-color --quiet"
 
   log "Installing Node Modules"
   # Only do bundle install if the much-faster
