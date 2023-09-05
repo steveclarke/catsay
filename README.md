@@ -5,7 +5,7 @@ This is the app for the Docker Book.
 ## Use
 
 * `bin/setup` will install all needed Ruby Gems and Node modules
-* `bin/run` will run the app on port 3000
+* `bin/run` will run the app on localhost, port 3000.  To change the binding, set `BINDING` in the environment.
 
 Notes:
 
