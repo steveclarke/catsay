@@ -28,7 +28,7 @@ def help
   log "  bin/ci"
   log "     # runs all tests and checks as CI would"
   log ""
-  log "  bin/ssed"
+  log "  bin/seed"
   log "     # Re-seed dev Redis with messages"
   log ""
   log "  bin/setup help"
