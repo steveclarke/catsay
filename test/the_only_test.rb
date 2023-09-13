@@ -3,7 +3,15 @@ require "capybara"
 require "capybara/dsl"
 require "redis"
 require "dotenv"
-RACK_ENV = ENV.fetch("RACK_ENV")
+
+if !defined? RACK_ENV
+  RACK_ENV = ENV.fetch("RACK_ENV")
+end
+
+if RACK_ENV != "test"
+  raise "RACK_ENV must be 'test'"
+end
+
 Dotenv.load(".env.#{RACK_ENV}", ".env.#{RACK_ENV}.local")
 class TheOnlyTest < Minitest::Test
   include Capybara::DSL
