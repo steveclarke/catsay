@@ -1,6 +1,6 @@
 # CatSay - Make Carlos Rosario and Zoni Say Things
 
-This is the app for the Docker Book.
+This is the app for [“Sustainable Dev Environments with Docker and Bash”](https://devbox.computer).
 
 ## Use
 
