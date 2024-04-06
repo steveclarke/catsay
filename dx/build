@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -e
+set -o pipefail
+
+dirname=$(dirname -- "${0}")
+script_dir=$(cd -- "${dirname}" > /dev/null 2>&1 && pwd)
+root_dir=$(cd -- "${script_dir}"/.. > /dev/null 2>&1 && pwd)
+echo ${script_dir} ; echo ${root_dir}
