@@ -12,6 +12,31 @@ log() {
   echo "[ ${0} ]" "${@}"
 }
 
+usage() {
+  echo "Usage: ${0} [-h]"
+  echo ""
+  echo "Builds the development Docker image from Dockerfile.dev"
+  echo ""
+  echo "OPTIONS"
+  echo ""
+  echo "  -h - show this help"
+}
+
+while getopts ":h" opt "${@}"; do
+  case ${opt} in
+    h)
+      usage
+      exit 0
+      ;;
+    \?)
+      log "Invalid option: ${OPTARG}"
+      usage
+      exit 1
+      ;;
+  esac
+done
+shift $((OPTIND - 1))
+
 if ! command -v "docker" > /dev/null 2>&1; then
   log "Docker is not installed."
   log "Please visit https://docs.docker.com/get-docker/"
