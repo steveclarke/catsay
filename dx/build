@@ -6,4 +6,10 @@ set -o pipefail
 dirname=$(dirname -- "${0}")
 script_dir=$(cd -- "${dirname}" > /dev/null 2>&1 && pwd)
 root_dir=$(cd -- "${script_dir}"/.. > /dev/null 2>&1 && pwd)
-echo ${script_dir} ; echo ${root_dir}
+#echo ${script_dir} ; echo ${root_dir}
+
+if ! command -v "docker" > /dev/null 2>&1; then
+  echo "Docker is not installed."
+  echo "Please visit https://docs.docker.com/get-docker/"
+  exit 1
+fi
