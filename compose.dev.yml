@@ -1,0 +1,16 @@
+services:
+  app:
+    image: catsay-dev
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    init: true
+    volumes:
+      - type: bind
+        source: "."
+        target: "/root/catsay"
+    ports:
+        - 4242:3000
+
+  redis:
+    image: redis:7.2-alpine

@@ -1,0 +1,14 @@
+FROM debian:12.1
+
+RUN apt-get update --quiet --yes
+RUN apt-get install --quiet --yes curl
+RUN apt-get install --quiet --yes ruby-full build-essential
+
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install --quiet --yes nodejs
+
+RUN gem install bundler
+
+WORKDIR /root/catsay
+
+CMD sleep infinity
