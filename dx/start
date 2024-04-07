@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+set -e
+set -o pipefail
+
+dirname=$(dirname -- "${0}")
+script_dir=$(cd -- "${dirname}" > /dev/null 2>&1 && pwd)
+. "${script_dir}"/shared.lib.sh
+
+usage() {
+  echo "Usage: ${0} [-h]"
+  echo ""
+  echo "Starts the development environment"
+  echo ""
+  echo "OPTIONS"
+  echo ""
+  echo "  -h - show this help"
+}
+
+while getopts ":h" opt "${@}"; do
+  case ${opt} in
+    h)
+      usage
+      exit 0
+      ;;
+    \?)
+      log "Invalid option: ${OPTARG}"
+      usage
+      exit 1
+      ;;
+  esac
+done
+shift $((OPTIND - 1))
+
+check_for_docker
+
+log "Starting development environment..."
+docker compose \
+  --file "${root_dir}/compose.dev.yml" \
+  up \
+  --detach
+
+log "Development environment started successfully!"

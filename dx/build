@@ -43,3 +43,13 @@ if ! command -v "docker" > /dev/null 2>&1; then
   exit 1
 fi
 log "Docker is installed!"
+
+image_name=catsay-dev:debian-12.1
+
+log "Building Docker image '${image_name}'..."
+docker build \
+  --tag "${image_name}" \
+  --file "${root_dir}/Dockerfile.dev" \
+  "${root_dir}"
+
+log "Docker image '${image_name}' built successfully!"
