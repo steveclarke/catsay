@@ -37,6 +37,7 @@ check_for_docker
 log "Starting development environment..."
 docker compose \
   --file "${root_dir}/compose.dev.yml" \
+  --env-file "${script_dir}"/.env \
   up \
   --detach
 

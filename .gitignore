@@ -16,3 +16,4 @@ dx/docker-compose.env.local.env
 dx/docker-compose.env.env
 
 .idea/*
+dx/.env

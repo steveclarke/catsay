@@ -6,11 +6,9 @@ set -o pipefail
 dirname=$(dirname -- "${0}")
 script_dir=$(cd -- "${dirname}" > /dev/null 2>&1 && pwd)
 root_dir=$(cd -- "${script_dir}"/.. > /dev/null 2>&1 && pwd)
-#echo ${script_dir} ; echo ${root_dir}
+. ${script_dir}/shared.lib.sh
+. ${script_dir}/.env
 
-log() {
-  echo "[ ${0} ]" "${@}"
-}
 
 usage() {
   echo "Usage: ${0} [-h]"
@@ -37,19 +35,12 @@ while getopts ":h" opt "${@}"; do
 done
 shift $((OPTIND - 1))
 
-if ! command -v "docker" > /dev/null 2>&1; then
-  log "Docker is not installed."
-  log "Please visit https://docs.docker.com/get-docker/"
-  exit 1
-fi
-log "Docker is installed!"
+check_for_docker
 
-image_name=catsay-dev:debian-12.1
-
-log "Building Docker image '${image_name}'..."
+log "Building Docker image '${IMAGE_NAME}'..."
 docker build \
-  --tag "${image_name}" \
+  --tag "${IMAGE_NAME}" \
   --file "${root_dir}/Dockerfile.dev" \
   "${root_dir}"
 
-log "Docker image '${image_name}' built successfully!"
+log "Docker image '${IMAGE_NAME}' built successfully!"

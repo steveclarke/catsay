@@ -1,6 +1,6 @@
 services:
   app:
-    image: catsay-dev
+    image: ${IMAGE_NAME}
     build:
       context: .
       dockerfile: Dockerfile.dev
