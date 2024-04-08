@@ -5,9 +5,7 @@ set -o pipefail
 
 dirname=$(dirname -- "${0}")
 script_dir=$(cd -- "${dirname}" > /dev/null 2>&1 && pwd)
-. ${script_dir}/shared.lib.sh
-. ${script_dir}/.env
-
+\. ${script_dir}/shared.lib.sh
 
 usage() {
   echo "Usage: ${0} [-h]"
@@ -36,10 +34,10 @@ shift $((OPTIND - 1))
 
 check_for_docker
 
-log "Building Docker image '${IMAGE_NAME}'..."
-docker build \
-  --tag "${IMAGE_NAME}" \
-  --file "${root_dir}/Dockerfile.dev" \
-  "${root_dir}"
+log "Stopping dev environment"
+docker compose \
+  --file "${root_dir}"/compose.dev.yml \
+  --env-file "${script_dir}"/.env \
+  down
 
-log "Docker image '${IMAGE_NAME}' built successfully!"
+log "Dev environment stopped successfully!"
