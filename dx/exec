@@ -55,7 +55,7 @@ shift $((OPTIND - 1))
 
 check_for_docker
 
-log "Executing '${@}' inside container with service '${service}'"
+log "Executing '${*}' inside container with service '${service}'"
 docker compose \
   --file "${root_dir}"/compose.dev.yml \
   --env-file "${script_dir}"/.env \
