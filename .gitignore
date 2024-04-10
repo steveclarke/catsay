@@ -17,3 +17,5 @@ dx/docker-compose.env.env
 
 .idea/*
 dx/.env
+# This is for developer-specific customizations
+.bashrc.dx.local

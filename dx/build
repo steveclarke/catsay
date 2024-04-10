@@ -36,6 +36,24 @@ shift $((OPTIND - 1))
 
 check_for_docker
 
+bashrc_local=".bashrc.dx.local"
+bashrc_local_path="${root_dir}"/"${bashrc_local}"
+
+if [ -e "${bashrc_local_path}" ]; then
+  log "${bashrc_local_path} exists - not touching it"
+else
+  log "${bashrc_local_path} missing - creating it..."
+  echo "# Place custom Bash configuration to use" >> "${bashrc_local_path}"
+  echo "# inside the running container here" >> "${bashrc_local_path}"
+fi
+if grep "${bashrc_local}" .gitignore > /dev/null 2>&1; then
+  log "${bashrc_local} already in .gitignore"
+else
+  log "${bashrc_local} not in .gitignore - adding it..."
+  echo "# This is for developer-specific customizations" >> .gitignore
+  echo "${bashrc_local}" >> .gitignore
+fi
+
 log "Building Docker image '${IMAGE_NAME}'..."
 docker build \
   --tag "${IMAGE_NAME}" \
