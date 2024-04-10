@@ -5,7 +5,7 @@ RUN apt-get install --quiet --yes curl less vim
 RUN apt-get install --quiet --yes ruby-full build-essential
 
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
-    apt-get install --quiet --yes nodejs
+  apt-get install --quiet --yes nodejs
 
 RUN gem install bundler
 
